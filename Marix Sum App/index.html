@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxrix Sum App</title>
+    <style>
+
+            .mInput {
+
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+            display: inline-block
+            }
+            .hidden {
+            visibility: hidden;
+            }
+    </style>
+</head>
+<body>
+    <h1>Azhar Ejaz </h1>
+
+    <h2>Matrix Summ App</h2>
+
+    <form onsubmit="Getboxes(); return false"  >
+        <input id="input1" required min="2" type="number" >
+        X
+        <input id="input2" required min="2" type="number" >
+        <button type="submit"> Check </button>
+        <p id="Valdation" style="color:red"></p>
+
+    </form>
+    <form onsubmit=" return false"  id="metrixInputForm" class="hidden">
+        <div id="inputB1" class="mInput"></div>
+        +
+        <div id="inputB2" class="mInput" ></div>
+        =
+        <div id="inputResult" class="mInput" ></div>
+        
+
+
+    </form>
+
+
+
+<script>
+    
+    let input1 =""; //document.querySelector('#input1').value;
+    let input2 = "";// document.querySelector('#input2').value;
+
+    function Getboxes(){
+
+        let inputB1= document.querySelector("#inputB1")
+        let inputB2= document.querySelector("#inputB2")
+        let inputResult = document.querySelector("#inputResult")
+        let input1 = +document.querySelector("#input1").value;
+        let input2 = +document.querySelector("#input2").value;
+
+
+
+        //inputB1.innerHTML = "";
+        //inputB2.innerHTML = "";
+        //inputResult.innerHTML = "";
+
+        if(input1 !== input2){
+            document.querySelector("#Valdation").innerHTML = "Please Enter Same number in both Inputs";
+            console.log("Input1 : ", input1);
+            input1.innerHTML = 0;
+            input2.innerHTML = 0;
+            return;
+        }
+        else{
+
+
+            for(let i=0;i<input1; i++) {
+                for(let j=0; j<input2 ;j++) {
+
+                    inputB1.innerHTML += `<input type="number" required min="0" max="100" id="inputB1-${i}-${j}" value="0">`;
+                    inputB2.innerHTML += `<input type="number" required min="0" max="100" id="inputB2-${i}-${j}" value="0">`;;
+                    inputResult.innerHTML += `<input type="number" disabled required min="0" max="100" id="inputResult-${i}-${j}" value="0">`;
+                    //console.log("Nested Loop Input1 : ", input1);
+
+                }
+                inputB1.innerHTML += `<br>`;
+                inputB2.innerHTML += `<br>`;
+                inputResult.innerHTML += `<br>`;
+                console.log("Loop Input1 : ", input1);
+
+            }
+            document.querySelector("#metrixInputForm").classList.remove("hidden");
+        }
+       
+        console.log("Input : ", input1)
+       // return ;
+
+    }
+
+
+    function sum(){
+
+            for (let i= 0 ;i<input1;i++ ) {
+                
+
+            }
+
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,2 +1,2 @@
-# azharejaz7/JavaScript-Project
- Checked
+# JavaScript-Project
+ My Java Script Project while Learning

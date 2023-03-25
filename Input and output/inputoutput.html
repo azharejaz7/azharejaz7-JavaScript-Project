@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h1>   Azhar Ejaz </h1>
+
+    <label>1st Input </label>
+    <input type="text" id="inputNum1" />  <br>
+
+    <label> 2nd  Input </label>
+    <input type="text" id="inputNum2" /> <br><br><br>
+
+    <h3 id="outputResult"> </h3>
+
+    <button onclick="getOutput()" type="submit"> Get Output</button>
+
+    <script>    
+    
+        function getOutput(){
+    
+            let inputNum1 = Number(document.querySelector('#inputNum1').value);
+            let inputNum2 = Number(document.querySelector('#inputNum2').value);
+
+            //let outputResult = inputNum1 + inputNum2;
+            
+
+            if(inputNum1>inputNum2){
+
+                outputResult = "inputNum1 is greater then then inputNum2 ";
+                console.log(outputResult);
+
+            }
+            else{
+                outputResult = "inputNum2 is greater then then inputNum1 ";
+                console.log("outputResult :", outputResult);
+            }
+
+            document.querySelector('#outputResult').innerText = outputResult;   
+    
+    
+        }
+        
+        
+        </script>
+    
+</body>
+</html>
