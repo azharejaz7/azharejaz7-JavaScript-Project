@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+
+       nav { 
+        background-color: black;
+        height: 40px;
+        width: 100%;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        color: aliceblue;
+        font-size: 30px;
+        text-align: left;
+        text-transform: uppercase;
+        padding: 20px;
+       } 
+
+       input {
+        
+        width: 60%;
+        height: 40px;
+        content: center;
+        border-radius:  20px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        padding-left: 2%;
+       
+       }
+       .button {
+        width: 10%;
+        height: 40px;
+        content: center;
+        border-radius:  10px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        padding-left: 2%;
+
+       }
+
+       .fconailner {
+        display: flex;
+       }
+
+       .tempcss {
+        font-size: 120px;
+        font-family: 'Times New Roman', Times, serif;
+       }
+       .fContainer-item {
+
+                padding: 50px;
+        }
+    </style>
+</head>
+    <script>
+        function getWeatherData() {
+            // get city name
+            // const city = document.getElementById("city").value;
+            let searchCity = document.querySelector("#cityName").value;
+
+            axios.get(`http://api.weatherapi.com/v1/current.json?key=2caff4a3c0594dd38dd55517232703&q=${searchCity}`)
+                .then(function (response) {
+                    // handle success
+                    const data = response.data;
+                    console.log(data);
+                    console.log(data.current.feelslike_f);
+                    
+                    document.querySelector("#temp_c").innerHTML = "Temp C : " +  data.current.temp_c+"°C";
+                    document.querySelector("#wind_kph").innerHTML = "Wind Kph : " +  data.current.wind_kph;
+                    document.querySelector("#humidity").innerHTML = "Humidity : " +  data.current.humidity;
+                    document.querySelector("#vis_km").innerHTML = "Visibility km : " +  data.current.vis_km;
+                    document.querySelector("#precip_in").innerHTML = "precip_in : " +  data.current.precip_in;
+                    document.querySelector("#conditionText").innerHTML = "Weather Condition : " +  data.current.condition.text;
+                    document.querySelector("#conditionIcon").innerHTML =   data.current.condition.icon;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                })
+                
+                axios.get(`http://api.weatherapi.com/v1/forecast.json?key=2caff4a3c0594dd38dd55517232703&q=${searchCity}`)
+                .then(function (response1) {
+                    // handle success
+                    const forcastData = response1.data;
+                    console.log("Forcast Data : ",forcastData);
+                    console.log(forcastData.forecast.forecastday[0].day.maxtemp_c);
+                    
+                     document.querySelector("#maxtemp_c").innerHTML = "Max : " +  forcastData.forecast.forecastday[0].day.maxtemp_c;
+                     document.querySelector("#mintemp_c").innerHTML = "Min : " +  forcastData.forecast.forecastday[0].day.mintemp_c;
+                     //let = document.querySelector("#humidity").innerHTML = "Humidity : " +  data.current.humidity;
+                    //  let = document.querySelector("#vis_km").innerHTML = "Visibility km : " +  data.current.vis_km;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                })
+                
+        }
+        
+
+    </script>
+
+
+<body>
+
+    <div>
+    <nav>Azhar Ejaz - Weather App</nav>
+    </div>
+
+    <div >
+        <form onsubmit="getWeatherData(); return false">
+        <br>
+        <input type="text" placeholder="Enter Youre City Name" id="cityName" />
+
+        <button type="submit">Check Weather</button>
+        </form>
+    </div>
+
+<div>
+
+       
+    <div>
+        <span class="tempcss" id="temp_c"></span> 
+    </div>
+    <div class="fconailner">
+
+       
+
+            <div class="fContainer-item" >
+                <span id="wind_kph"></span><br>
+                <span id="humidity"></span><br>
+                <span id="vis_km"></span><br>
+            </div>
+            <div  class="fContainer-item" >
+                <span id="maxtemp_c"></span> <br>
+                <span id="mintemp_c"></span><br>
+                <span id="precip_in"></span><br>
+            </div>
+               
+        
+    </div>
+       
+        
+       
+</div>
+
+
+
+    
+</body>
+</html>
