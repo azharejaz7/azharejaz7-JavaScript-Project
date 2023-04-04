@@ -4,39 +4,130 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App  by Az  </title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
+    <!-- <style>
+        
+
+      
 
        nav { 
         background-color: black;
-        height: 40px;
+        height: 60px;
         width: 100%;
         font-family: 'Times New Roman', Times, serif;
         font-size: 20px;
         color: aliceblue;
         font-size: 30px;
-        text-align: left;
+        text-align: center;
+        content: center;
         text-transform: uppercase;
-        padding: 20px;
+        margin: auto;
+       
        } 
 
        input {
         
-        width: 60%;
+        width: 70%;
         height: 40px;
-        content: center;
+        
         border-radius:  20px;
         font-family: 'Times New Roman', Times, serif;
         font-size: 20px;
         padding-left: 2%;
        
        }
-       .button {
-        width: 10%;
-        height: 40px;
+       button {
+        width: 15%;
+        height: 50px;
+        
+        border-radius:  20px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        padding-left: 2%;
+
+       }
+
+       body{
+        margin: auto;
+        width: 100%;
+        
+       }
+
+       .fconailner {
+        margin: auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         content: center;
-        border-radius:  10px;
+        flex-wrap: wrap;
+                
+       }
+
+       .fconailner-temp-c{
+        margin: auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        content: center;
+        flex-wrap: wrap;
+        
+
+       }
+
+       .tempcss {
+        font-size: 500%;
+        font-family: 'Times New Roman', Times, serif;
+       }
+       .fContainer-temp-item-Shirink {
+     
+               flex-shrink: 4;
+        }
+        .fContainer-temp-item {
+
+                padding: 50px;
+               
+        }
+        .fContainer-item {
+
+                padding: 50px;
+        }
+    </style> -->
+    <style>
+        
+       nav { 
+        background-color: black;
+        height: 60px;
+        width: 100%;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        color: aliceblue;
+        font-size: 30px;
+        text-align: center;
+        content: center;
+        text-transform: uppercase;
+        margin: auto;
+       
+       } 
+
+       input {
+        
+        width: 70%;
+        height: 40px;
+        
+        border-radius:  20px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        padding-left: 2%;
+       
+       }
+       button {
+        width: 15%;
+        height: 50px;
+        
+        border-radius:  20px;
         font-family: 'Times New Roman', Times, serif;
         font-size: 20px;
         padding-left: 2%;
@@ -44,19 +135,37 @@
        }
 
        .fconailner {
+        margin: auto;
+        width: 100%;
         display: flex;
-       }
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        content: center;
+       border: 5px dotted red;
 
-       .tempcss {
-        font-size: 120px;
-        font-family: 'Times New Roman', Times, serif;
+                
        }
        .fContainer-item {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        column-gap: 5px;
+        padding: 50px;
+        border: 5px dotted rgb(71, 69, 69);
 
-                padding: 50px;
         }
+
+        .fContainer-item .wetherDetails {
+            column-gap: 10px;
+            border : 2px solid black;
+            margin: 1em;
+            
+        }
+
     </style>
 </head>
+<!-- Javascript Code for call API-->
     <script>
         function getWeatherData() {
             // get city name
@@ -74,12 +183,12 @@
                     document.querySelector("#wind_kph").innerHTML = "Wind Kph : " +  data.current.wind_kph;
                     document.querySelector("#humidity").innerHTML = "Humidity : " +  data.current.humidity;
                     document.querySelector("#vis_km").innerHTML = "Visibility km : " +  data.current.vis_km;
-                    document.querySelector("#precip_in").innerHTML = "precip_in : " +  data.current.precip_in;
-                    document.querySelector("#conditionText").innerHTML = "Weather Condition : " +  data.current.condition.text;
-                    document.querySelector("#conditionIcon").innerHTML =   data.current.condition.icon;
+                    document.querySelector("#precip_in").innerHTML = "precip_in : " +  ((data.current.precip_in)*100) +"%";
+                    document.querySelector("#conditionText").innerHTML = "" +  data.current.condition.text;
+                    document.getElementById("conditionIcon").src =  "http:"+ data.current.condition.icon;
                     //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
                     //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                    //  let = document.que                                       m mmnnnnnnnnnnnnnnnnnnrySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
                     //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
                 })
                 
@@ -90,8 +199,8 @@
                     console.log("Forcast Data : ",forcastData);
                     console.log(forcastData.forecast.forecastday[0].day.maxtemp_c);
                     
-                     document.querySelector("#maxtemp_c").innerHTML = "Max : " +  forcastData.forecast.forecastday[0].day.maxtemp_c;
-                     document.querySelector("#mintemp_c").innerHTML = "Min : " +  forcastData.forecast.forecastday[0].day.mintemp_c;
+                     document.querySelector("#maxtemp_c").innerHTML = "Max : " +  forcastData.forecast.forecastday[0].day.maxtemp_c+"°C";
+                     document.querySelector("#mintemp_c").innerHTML = "Min : " +  forcastData.forecast.forecastday[0].day.mintemp_c+"°C";
                      //let = document.querySelector("#humidity").innerHTML = "Humidity : " +  data.current.humidity;
                     //  let = document.querySelector("#vis_km").innerHTML = "Visibility km : " +  data.current.vis_km;
                     //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
@@ -110,10 +219,11 @@
 
 <body>
 
+<!-- Nav bar -->
     <div>
     <nav>Azhar Ejaz - Weather App</nav>
     </div>
-
+<!-- Search Bar -->
     <div >
         <form onsubmit="getWeatherData(); return false">
         <br>
@@ -123,26 +233,38 @@
         </form>
     </div>
 
-<div>
+
 
        
-    <div>
-        <span class="tempcss" id="temp_c"></span> <br>
-        <span id="conditionText"></span>
-    </div>
-    <div class="fconailner">
+    <div class="fconailner" >
+        
+        <div class="fContainer-item">
 
-       
-
-            <div class="fContainer-item" >
+            <div class="wetherDetails"> 
+                <img id="conditionIcon" src="" alt="" >
+                <div>
+                    <span id="conditionText"></span>
+                </div>
+            </div>
+            <div class="wetherDetails">
+                <span class="tempcss" id="temp_c"></span> <br>
+            </div>
+            
+        </div>
+        
+   
+   
+            <div class="fContainer-item">
+                <div class="wetherDetails">
                 <span id="wind_kph"></span><br>
                 <span id="humidity"></span><br>
                 <span id="vis_km"></span><br>
             </div>
-            <div  class="fContainer-item" >
+            <div  class="wetherDetails" >
                 <span id="maxtemp_c"></span> <br>
                 <span id="mintemp_c"></span><br>
                 <span id="precip_in"></span><br>
+            </div>
             </div>
                
         
@@ -150,7 +272,7 @@
        
         
        
-</div>
+
 
 
 
