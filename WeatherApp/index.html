@@ -124,15 +124,31 @@
        
        }
        button {
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+
         width: 15%;
         height: 50px;
-        
         border-radius:  20px;
         font-family: 'Times New Roman', Times, serif;
         font-size: 20px;
         padding-left: 2%;
+        background-color: white;
+        color: black;
+        border: 2px solid #555555;
 
        }
+
+       button:hover {
+        background-color: #555555;
+        color: white;
+        }
 
        .fconailner {
         margin: auto;
@@ -142,7 +158,8 @@
         align-items: center;
         justify-content: center;
         content: center;
-       border: 5px dotted red;
+        border: 5px solid greenyellow;
+        
 
                 
        }
@@ -150,19 +167,43 @@
         display: flex;
         width: 100%;
         justify-content: center;
+        align-items: center;
         column-gap: 5px;
-        padding: 50px;
-        border: 5px dotted rgb(71, 69, 69);
-
+        padding: 7px;
+       
         }
+        .fContainer-item >form {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tempcss {
+        font-size: 500%;
+        font-family: 'Times New Roman', Times, serif;
+       }
 
         .fContainer-item .wetherDetails {
             column-gap: 10px;
-            border : 2px solid black;
+           
             margin: 1em;
             
         }
-
+        .fContainer-item .wetherDetails > p {
+         
+            margin: 0px;
+            margin-top: 5px;
+            border-bottom: 1px solid gray;
+            padding-left: 5px;
+            padding-right: 10px;
+            
+        }
+        .VerticalLine {
+            border-left: 1px solid gray;
+            height: 70px;
+        
+        }
     </style>
 </head>
 <!-- Javascript Code for call API-->
@@ -224,13 +265,16 @@
     <nav>Azhar Ejaz - Weather App</nav>
     </div>
 <!-- Search Bar -->
-    <div >
-        <form onsubmit="getWeatherData(); return false">
-        <br>
-        <input type="text" placeholder="Enter Youre City Name" id="cityName" />
-
-        <button type="submit">Check Weather</button>
-        </form>
+    <div class="fconailner">
+        <div class="fContainer-item">
+             <form onsubmit="getWeatherData(); return false"> 
+            
+                <input type="text" placeholder="Enter Youre City Name" id="cityName" />
+                <button type="submit">Check Weather</button>
+   
+            
+            </form>
+        </div>
     </div>
 
 
@@ -256,14 +300,15 @@
    
             <div class="fContainer-item">
                 <div class="wetherDetails">
-                <span id="wind_kph"></span><br>
-                <span id="humidity"></span><br>
-                <span id="vis_km"></span><br>
+                <p id="wind_kph"></p>
+                <p id="humidity"></p>
+                <p id="vis_km"></p>
             </div>
+            <div class="VerticalLine"></div>
             <div  class="wetherDetails" >
-                <span id="maxtemp_c"></span> <br>
-                <span id="mintemp_c"></span><br>
-                <span id="precip_in"></span><br>
+                <p id="maxtemp_c"></p> 
+                <p id="mintemp_c"></p>
+                <p id="precip_in"></p>
             </div>
             </div>
                
