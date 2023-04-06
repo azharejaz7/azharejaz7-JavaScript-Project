@@ -97,20 +97,23 @@
     </style> -->
     <style>
         
-       nav { 
+       nav {
         background-color: black;
-        height: 60px;
+        margin: 0px;
+        height: 80px;
         width: 100%;
         font-family: 'Times New Roman', Times, serif;
-        font-size: 20px;
         color: aliceblue;
         font-size: 30px;
         text-align: center;
-        content: center;
         text-transform: uppercase;
         margin: auto;
        
        } 
+       nav > h4 {
+        margin: 0px;
+        padding-top: 25px;
+       }
 
        input {
         
@@ -158,7 +161,7 @@
         align-items: center;
         justify-content: center;
         content: center;
-        border: 5px solid greenyellow;
+     
         
 
                 
@@ -210,7 +213,6 @@
     <script>
         function getWeatherData() {
             // get city name
-            // const city = document.getElementById("city").value;
             let searchCity = document.querySelector("#cityName").value;
 
             axios.get(`http://api.weatherapi.com/v1/current.json?key=2caff4a3c0594dd38dd55517232703&q=${searchCity}`)
@@ -221,16 +223,13 @@
                     console.log(data.current.feelslike_f);
                     
                     document.querySelector("#temp_c").innerHTML = "Temp C : " +  data.current.temp_c+"°C";
-                    document.querySelector("#wind_kph").innerHTML = "Wind Kph : " +  data.current.wind_kph;
-                    document.querySelector("#humidity").innerHTML = "Humidity : " +  data.current.humidity;
+                    document.querySelector("#wind_kph").innerHTML = "Wind : " +  data.current.wind_kph +" km/h";
+                    document.querySelector("#humidity").innerHTML = "Humidity : " +  data.current.humidity +"%";
                     document.querySelector("#vis_km").innerHTML = "Visibility km : " +  data.current.vis_km;
                     document.querySelector("#precip_in").innerHTML = "precip_in : " +  ((data.current.precip_in)*100) +"%";
                     document.querySelector("#conditionText").innerHTML = "" +  data.current.condition.text;
                     document.getElementById("conditionIcon").src =  "http:"+ data.current.condition.icon;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.que                                       m mmnnnnnnnnnnnnnnnnnnrySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                  
                 })
                 
                 axios.get(`http://api.weatherapi.com/v1/forecast.json?key=2caff4a3c0594dd38dd55517232703&q=${searchCity}`)
@@ -242,15 +241,15 @@
                     
                      document.querySelector("#maxtemp_c").innerHTML = "Max : " +  forcastData.forecast.forecastday[0].day.maxtemp_c+"°C";
                      document.querySelector("#mintemp_c").innerHTML = "Min : " +  forcastData.forecast.forecastday[0].day.mintemp_c+"°C";
-                     //let = document.querySelector("#humidity").innerHTML = "Humidity : " +  data.current.humidity;
-                    //  let = document.querySelector("#vis_km").innerHTML = "Visibility km : " +  data.current.vis_km;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
-                    //  let = document.querySelector("#feelslike_f").innerHTML = "Feels Like : " +  data.current.feelslike_f;
+                     
                 })
+
+                let cssClass1 = document.getElementById("applyCss1");
+                cssClass1.classList.add("wetherDetails");
+                let cssClass2 = document.getElementById("applyCss2");
+                cssClass2.classList.add("wetherDetails");
+                let VerticalLine = document.getElementById("VerticalLine");
+                VerticalLine.classList.add("VerticalLine");
                 
         }
         
@@ -262,7 +261,7 @@
 
 <!-- Nav bar -->
     <div>
-    <nav>Azhar Ejaz - Weather App</nav>
+    <nav> <h4>Azhar Ejaz - Weather App</h4></nav>
     </div>
 <!-- Search Bar -->
     <div class="fconailner">
@@ -279,12 +278,12 @@
 
 
 
-       
+      <!-- content container  -->
     <div class="fconailner" >
-        
+        <!-- current temprature container -->
         <div class="fContainer-item">
 
-            <div class="wetherDetails"> 
+            <div  class="wetherDetails"> 
                 <img id="conditionIcon" src="" alt="" >
                 <div>
                     <span id="conditionText"></span>
@@ -297,22 +296,24 @@
         </div>
         
    
-   
+        <!-- weather detials contaner -->
             <div class="fContainer-item">
-                <div class="wetherDetails">
+                <div id="applyCss1"  class="">
                 <p id="wind_kph"></p>
                 <p id="humidity"></p>
                 <p id="vis_km"></p>
             </div>
-            <div class="VerticalLine"></div>
-            <div  class="wetherDetails" >
+
+            <div id="VerticalLine"  class=""></div>
+
+            <div  id="applyCss2"  class="" >
                 <p id="maxtemp_c"></p> 
                 <p id="mintemp_c"></p>
                 <p id="precip_in"></p>
             </div>
             </div>
                
-        
+        <!-- footer not needed -->
     </div>
        
         
