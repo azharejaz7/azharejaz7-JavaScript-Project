@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+
+<h1 id="result"></h1>
+
+<script>
+
+        x = parseInt(prompt());
+        y = parseInt(prompt());
+        
+        // function addTwoVlaue (a,b){
+        //     return a+b;
+
+        // }
+
+        // let z = addTwoVlaue(x,y);
+       let add =  (a,b) => { 
+        return a+b;
+        
+    };
+    let z =add(x,y);
+       
+        let result = document.getElementById("result").innerText= z;
+        console.log("Adding Value :" ,result);
+
+        let person = {
+            name : "azhar",
+            fname : "Ejaz",
+            couruse : {
+                english :100,
+                math: 80,
+                urdu : 90},
+            height :5.8
+        } 
+
+        
+        
+        for (let x in person ){
+             console.log("Objct Print :",person[x])
+        console.log("------------------------------",)
+        }      
+
+    </script>
+    
+</body>
+</html>
