@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <h1>Birthday Calculator App - Azhar Ejaz</h1>
+
+    <div>
+        <p id="oldYear"></p>
+    </div>
+
+    <div>
+        <p id="nextBirthday"> </p>
+    </div>
+
+
+    <script>
+
+        const milisecondInYear = 31556952000; // milliseconds in a year
+        const milisecondInMonth = 2629746000; // milliseconds in a Month
+        const millisecondsInDay = 86400000; //milliseconds in a day
+        const millisecondsInHours = 3600000 ; //milliseconds in a hours
+        const millisecondsInMinuts = 60000; //milliseconds in a Minuts
+        const millisecondsInSeconds = 1000; //milliseconds in a Second
+
+
+
+        // get input from user 
+        let getDate = new Date("01-03-1993");
+
+        //current Date
+        const today =  new Date();
+
+        // get reminders months/days/hours/minuts/seconds
+        let ObjectOldYear = today-getDate;
+        let ObjectOldMonth = ObjectOldYear % milisecondInYear;
+        let ObjecOldDays = ObjectOldMonth % milisecondInMonth;
+        let ObjecOldHours = ObjecOldDays % millisecondsInDay;
+        let ObjecOldMinuts = ObjecOldHours % millisecondsInHours;
+        let ObjecOldSeconds = ObjecOldMinuts % millisecondsInMinuts;
+
+
+        //Get object Actual months/days/hours/minuts/seconds
+        let    setObjectOldYear = Math.floor(ObjectOldYear / milisecondInYear) ;
+        let    setObjectOldMonth = Math.floor(ObjectOldMonth / milisecondInMonth) ;
+        let    setObjecOldDays = Math.floor(ObjecOldDays / millisecondsInDay) ;
+        let    setObjecOldHours = Math.floor(ObjecOldHours / millisecondsInHours) ;
+        let    setObjecOldMinuts =Math.floor(ObjecOldMinuts / millisecondsInMinuts) ;
+        let    setObjecOldSeconds = Math.floor(ObjecOldSeconds /millisecondsInSeconds) ;
+
+
+        // check calculation in console  
+        console.log(setObjectOldYear);
+        console.log(setObjectOldMonth);
+        console.log(setObjecOldDays);
+        console.log(setObjecOldHours);
+        console.log(setObjecOldMinuts);
+        console.log(setObjecOldSeconds);
+
+        let oldYear =`You are ${setObjectOldYear} Years ${setObjectOldMonth} Months ${setObjecOldDays} Days ${setObjecOldHours} Hours ${setObjecOldMinuts} Minuts ${setObjecOldSeconds} Seconds old `;
+
+        document.querySelector("#oldYear").innerText =oldYear;
+
+
+        let birthdayThisYear  = getDate;
+   
+        
+        
+       // getDate.getFullYear(getDate.getFullYear(),getDate.getDay() ++ );    
+        // Check birthday is passed or not and how many left in Next Birhtday
+        
+        birthdayThisYear.setFullYear(today.getFullYear())
+
+        if (today.getMonth() > getDate.getMonth()){
+            
+            birthdayThisYear.setFullYear(today.getFullYear() +1 )
+            console.log("Check Next Birthday : ", birthdayThisYear)
+            
+        }
+
+         // get reminders days/hours/minuts/seconds in next birthday
+        let NextObjectOldYear = birthdayThisYear-today;
+        let NextObjecOldDays = NextObjectOldYear % millisecondsInDay;
+        let NextObjecOldHours = NextObjecOldDays % millisecondsInHours;
+        let NextObjecOldMinuts = NextObjecOldHours % millisecondsInMinuts;
+        let NextObjecOldSeconds = NextObjecOldMinuts % millisecondsInMinuts;
+
+        //Get object Actual days/hours/minuts/seconds in next birthday
+        let    NextSetObjecOldDays = Math.floor(NextObjectOldYear / millisecondsInDay) ;
+        let    NextSetObjecOldHours = Math.floor(NextObjecOldDays / millisecondsInHours) ;
+        let    NextSetObjecOldMinuts =Math.floor(NextObjecOldHours / millisecondsInMinuts) ;
+        let    NextSetObjecOldSeconds = Math.floor(NextObjecOldSeconds /millisecondsInSeconds) ;
+
+
+        console.log("------------------------------------------");
+        //checking in console
+        console.log(NextSetObjecOldDays);
+        console.log(NextSetObjecOldHours);
+        console.log(NextSetObjecOldMinuts);
+        console.log(NextSetObjecOldSeconds);
+    
+       
+        let = nextBirthday = `Your Next Birthday is after ${NextSetObjecOldDays} Days ${NextSetObjecOldHours} Hours ${NextSetObjecOldMinuts} Minuts And ${NextSetObjecOldSeconds}.`
+
+        document.querySelector("#nextBirthday").innerText = nextBirthday;
+
+
+
+    </script>
+</body>
+</html>
